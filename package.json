@@ -1,0 +1,19 @@
+{
+  "name": "moviesapp",
+  "type": "module",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^3.1.1",
+    "astro": "^2.1.3",
+    "flowbite": "^1.6.5",
+    "tailwindcss": "^3.0.24"
+  }
+}
