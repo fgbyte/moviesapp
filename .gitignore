@@ -254,3 +254,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/node,astro,windows,linux,archlinuxpackages,macos
+
+
+# Secrets.js API_KEY
+#/public/helpers/secrets.js

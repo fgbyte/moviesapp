@@ -1,11 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Drawer from '../components/Drawer.astro';
+import TitleCard from '../components/TitleCard.astro';
+import Carousel from '../components/Carousel.astro';
+import CarouselVertical from '../components/CarouselVertical.astro';
+import BottomNav from '../components/BottomNav.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1 class="text-red-500 text-5xl font-bold">Welcome to <span class="text-gradient">Astro</span></h1>
+<Layout title="Trends Movies">
+	<Navbar/>
+	<Drawer/>
+	<main class="dark:bg-gray-800 px-10">
+		<TitleCard/>
+		<Carousel/>
+		<TitleCard/>
+		<CarouselVertical/>
 	</main>
+	<BottomNav/>
 </Layout>
 
 
