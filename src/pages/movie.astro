@@ -1,9 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import MovieHeader from "../components/MovieHeader.astro";
+import VideoCard from "../components/VideoCard.astro";
 ---
 
 <Layout title="Trends Movies">
-    <MovieHeader/>
-
+    <header class="px-10 dark:bg-gray-800">
+        <MovieHeader/>
+    </header>
+<VideoCard/>
 </Layout>
