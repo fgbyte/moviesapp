@@ -1,23 +1,26 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Drawer from '../components/Drawer.astro';
-import TitleCard from '../components/TitleCard.astro';
-import Carousel from '../components/Carousel.astro';
-import CarouselVertical from '../components/CarouselVertical.astro';
-import BottomNav from '../components/BottomNav.astro';
+export const prerender = true;
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Drawer from "../components/Drawer.astro";
+import TitleCard from "../components/TitleCard.astro";
+import Carousel from "../components/Carousel.astro";
+import CarouselVertical from "../components/CarouselVertical.astro";
+import BottomNav from "../components/BottomNav.astro";
+
+const name = "Mi Perro se llama Lola";
 ---
 
 <Layout title="Trends Movies">
-	<Navbar/>
-	<Drawer/>
-	<main class="dark:bg-gray-800 px-10">
-		<TitleCard/>
-		<Carousel/>
-		<TitleCard/>
-		<CarouselVertical/>
-	</main>
-	<BottomNav/>
+		<Navbar />
+  <Drawer />
+  <div class="dark:bg-gray-800 px-10">
+    <TitleCard title={`Now Showing`} />
+  </div>
+  <Carousel />
+  <div class="dark:bg-gray-800 px-10">
+    <TitleCard title={`Popular`} />
+    <CarouselVertical />
+  </div>
+  <!-- <BottomNav /> -->
 </Layout>
-
-

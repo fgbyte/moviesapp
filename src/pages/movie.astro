@@ -1,18 +1,13 @@
 ---
+export const prerender = true;
 import Layout from "../layouts/Layout.astro";
-import MovieHeader from "../components/MovieHeader.astro";
 import MovieVideo from "../components/MovieVideo.astro";
-import MovieTitle from "../components/MovieTitle.astro";
-import MovieCast from "../components/MovieCast.astro";
+import MovieCard from "../components/MovieCard.astro";
 ---
 
 <Layout title="Trends Movies">
-  <header class="px-10 dark:bg-gray-800">
-    <MovieHeader />
+  <header class=" dark:bg-gray-800">
+    <MovieVideo />
   </header>
-  <MovieVideo />
-  <main class="px-10 dark:bg-gray-800">
-    <MovieTitle />
-    <MovieCast/>
-  </main>
+      <MovieCard />
 </Layout>
