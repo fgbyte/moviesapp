@@ -258,3 +258,6 @@ $RECYCLE.BIN/
 
 # Secrets.js API_KEY
 #/public/helpers/secrets.js
+
+# SSR build
+.vercel
