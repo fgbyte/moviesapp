@@ -1,20 +1,23 @@
 ---
-/*TODO
-* dynamic content
-*/
+import Genero from "./Genero.astro";
+const image = Astro.props.image
+const alt = Astro.props.alt
+const stars = Astro.props.stars
+const genero = 'test'
+// const duration = Astro.props.duration
 ---
 
 <div
   class="w-100 px-2 max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-row gap-0 items-center"
 >
-  <img class="m-4 rounded-md w-20" src="/1.png" alt="film image" />
+  <img class="m-4 rounded-md w-20" src={image} alt={alt} />
   <div class="">
     <div class="flex flex-col flex-start py-2">
       <a href="#">
         <h5
           class="text-sm font-semibold tracking-tight text-gray-900 dark:text-white"
         >
-          Dynamic Title and Image
+          {alt}
         </h5>
       </a>
       <div class="flex items-center mt-2.5 mb-5">
@@ -30,28 +33,17 @@
         >
         <span
           class=" text-blue-800 text-xs font-semibold rounded dark:text-white"
-          >dynamic date</span
+          >{stars}</span
         >
       </div>
-      <div class="flex flex-row gap-2 flex-wrap uppercase">
-        <span
-          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-xl dark:bg-blue-200 dark:text-blue-800"
-          >dynamic</span
-        >
-        <span
-          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-xl dark:bg-blue-200 dark:text-blue-800"
-          >dynamic</span
-        >
-        <span
-          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-xl dark:bg-blue-200 dark:text-blue-800"
-          >dynamic</span
-        >
+      <div class="flex flex-row gap-2 flex-wrap">
+       <Genero genero={genero}/>
       </div>
 
-      <div class="flex mt-4 items-center">
+      <!-- <div class="flex mt-4 items-center">
         <svg class="w-5 h-5 mt-1.5 text-black-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5.877a6.623 6.623 0 1 0 0 13.246A6.623 6.623 0 0 0 7.5.877ZM1.827 7.5a5.673 5.673 0 1 1 11.346 0 5.673 5.673 0 0 1-11.346 0ZM8 4.5a.5.5 0 0 0-1 0v3a.5.5 0 0 0 .146.354l2 2a.5.5 0 0 0 .708-.708L8 7.293V4.5Z"/></svg>
-        <p class="text-sm dark:text-gray-400">1h 45m</p>
-      </div>
+        <p class="text-sm dark:text-gray-400">{duration}</p>
+      </div> -->
       
     </div>
   </div>
