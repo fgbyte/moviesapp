@@ -1,3 +1,1 @@
-async function getTrendingMovies() {
-    
-}
+console.log('HOla mundo')
