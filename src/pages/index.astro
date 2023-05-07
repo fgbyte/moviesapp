@@ -1,5 +1,5 @@
 ---
-export const prerender = true;
+export const prerender = true; //SSR things
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Drawer from "../components/Drawer.astro";
@@ -8,18 +8,17 @@ import Carousel from "../components/Carousel.astro";
 import CarouselVertical from "../components/CarouselVertical.astro";
 import BottomNav from "../components/BottomNav.astro";
 
-const name = "Mi Perro se llama Lola";
 ---
 
-<Layout title="Trends Movies">
+<Layout title="Fox Films">
 		<Navbar />
   <Drawer />
   <div class="dark:bg-gray-800 px-10">
-    <TitleCard title={`Now Showing`} />
+    <TitleCard title={`Trending Movies`} />
   </div>
   <Carousel />
   <div class="dark:bg-gray-800 px-10">
-    <TitleCard title={`Popular`} />
+    <TitleCard title={`Categories`} />
     <CarouselVertical />
   </div>
   <BottomNav />
