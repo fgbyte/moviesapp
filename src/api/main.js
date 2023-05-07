@@ -29,3 +29,16 @@ export async function getPopularMovies() {
         return console.log(error)
     }
 }
+
+export async function getCategoriesPreview() {
+    //GET /genre/movie/list => array[object]
+    try {
+        const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY)
+        const data = await res.json()
+
+        const categories = data.genres
+         return categories
+    } catch(error) {
+        return console.log(error)
+    }
+}

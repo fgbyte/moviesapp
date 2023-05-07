@@ -5,7 +5,8 @@ import Navbar from "../components/Navbar.astro";
 import Drawer from "../components/Drawer.astro";
 import TitleCard from "../components/TitleCard.astro";
 import Carousel from "../components/Carousel.astro";
-import CarouselVertical from "../components/CarouselVertical.astro";
+// import CarouselVertical from "../components/CarouselVertical.astro";
+import Categories from "../components/Categories.astro";
 import BottomNav from "../components/BottomNav.astro";
 
 ---
@@ -19,7 +20,8 @@ import BottomNav from "../components/BottomNav.astro";
   <Carousel />
   <div class="dark:bg-gray-800 px-10">
     <TitleCard title={`Categories`} />
-    <CarouselVertical />
+    <!-- <CarouselVertical /> -->
+    <Categories />
   </div>
   <BottomNav />
 </Layout>

@@ -1,9 +1,9 @@
 ---
-import Genero from "./Genero.astro";
+import Genres from "../components/Genres.astro";
 const image = Astro.props.image
 const alt = Astro.props.alt
 const stars = Astro.props.stars
-import {getCategoriesPreview} from '../api/main.js'
+// import {getCategoriesPreview} from '../api/main.js'
 
 const genero = 'test'
 // const duration = Astro.props.duration
@@ -39,7 +39,7 @@ const genero = 'test'
         >
       </div>
       <div class="flex flex-row gap-2 flex-wrap">
-       <Genero genero={genero}/>
+       <Genres genero={genero}/>
       </div>
 
       <!-- <div class="flex mt-4 items-center">
