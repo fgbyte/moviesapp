@@ -1,44 +1,50 @@
+import axios from "axios"
 import { API_KEY } from "./secrets"
+
+const api = axios.create({
+    baseURL: 'https://api.themoviedb.org/3/',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+    },
+    params: {
+        'api_key': API_KEY
+    }
+})
+
+
 
 export async function getTrendingMoviesPreview() {
     //GET /trending/{media_type}/{time_window}
-   
-   try {
-       const res = await fetch('https://api.themoviedb.org/3/trending/movie/day?api_key=' + API_KEY)
-       const data = await res.json()
-       //data === obj con las props "page" => number y "result" => [ 20 resultados ]
-
+    try {
+        const { data } = await api('trending/movie/day')
+        //data === obj con las props "page" => number y "result" => [ 20 resultados ]
         const movies = data.results
         return movies
-       //movies nos trae los objetos de 20 movies en tendencia
-   } catch(error) {
+        //movies nos trae los objetos de 20 movies en tendencia
+    } catch (error) {
         return console.error(error)
-   }
-
-}
-
-export async function getPopularMovies() {
-    // GET /movie/popular
-    try {
-        const res = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=' + API_KEY)
-        const data = await res.json()
-
-        const movies = data.results
-         return movies
-    } catch(error) {
-        return console.log(error)
     }
+
 }
+
+// export async function getPopularMovies() {
+//     // GET /movie/popular
+//     try {
+//         const { data } = await api('movie/popular')
+//         const movies = data.results
+//         return movies
+//     } catch (error) {
+//         return console.log(error)
+//     }
+// }
 
 export async function getCategoriesPreview() {
     //GET /genre/movie/list => array[object]
     try {
-        const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY)
-        const data = await res.json()
-
+        const { data } = await api('genre/movie/list')
         const categories = data.genres
-         return categories
-    } catch(error) {
+        return categories
+    } catch (error) {
         return console.log(error)
     }
 }
