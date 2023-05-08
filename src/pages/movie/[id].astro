@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MovieVideo from "../../components/MovieVideo.astro";
+import MovieCard from "../../components/MovieCard.astro";
+
+const { id } = Astro.params;
+const imagesURL = 'https://image.tmdb.org/t/p/w300'
+
+//esto genera una ruta dynamic con el id pasado como param en la url
+// console.log(id)//para que se muestre el file tiene que llamarse como [la prop]
+import { getTrendingMoviesPreview } from "../../api/main.js";
+const movies = await getTrendingMoviesPreview()
+const movie = movies.find(movie => movie.id == id)
+// console.log(movie)
+// console.log(imagesURL + movie.backdrop_path)
+
+//TODO
+//- pasarlos a los components
+---
+<Layout title="Movies">
+  <header class=" dark:bg-gray-800">
+    <MovieVideo image={imagesURL + movie.backdrop_path}/>
+    <h1 class="absolute text-white">{id}</h1>
+  </header>
+      <MovieCard />
+</Layout>
