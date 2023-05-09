@@ -7,14 +7,19 @@ const id = Astro.props.id
 ---
 
 <div
-  class="w-auto px-2 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col"
+  class="w-auto px-2 max-w-sm bg-white rounded-lg hover:shadow-lg hover:transition duration-500 hover:scale-105 dark:bg-gray-800 flex flex-col"
 >
 <a class="flex justify-center w-32" href={"/movie/" + id}>
   <img class="m-4 rounded-md" src={image} alt={alt} />
 </a>
   <div class="w-34">
-    
-    <div class="flex mb-5">
+    <div class="flex flex-wrap gap-2 mb-5">
+      <h5
+        class="text-sm font-semibold tracking-tight text-gray-900 dark:text-white"
+      >
+        {alt}
+      </h5>
+      <div class="flex">
       <svg
         aria-hidden="true"
         class="w-5 h-5 text-yellow-300"
@@ -29,6 +34,7 @@ const id = Astro.props.id
         class="text-blue-800 text-xs font-semibold rounded dark:text-white"
         >{stars}</span
       >
+      </div>
     </div>
   </div>
 </div>
