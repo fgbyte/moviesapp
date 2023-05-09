@@ -48,3 +48,12 @@ export async function getCategoriesPreview() {
         return console.log(error)
     }
 }
+
+export async function getVideos(movie_id) {
+    try {
+        const { data } = await api(`movie/${movie_id}/videos`)
+        return data
+    } catch (error) {
+        return console.log(error)
+    }
+}

@@ -1,14 +1,23 @@
 ---
+const image = Astro.props.image;//no encuentro sintaxis para tirarla al css por lo que tuve que hacerlo con vanilla
+// console.log(image) //path de la imagen
+const id = Astro.params
+const movie_id = id.id
+// console.log(movie_id)
+import { getVideos } from "../api/main.js";
+
+const videos = await getVideos(movie_id)
+const trailer = videos.results.find(video => video.type == "Trailer")
+const trailer_url = 'https://youtu.be/' + trailer.key
 /*TODO
  * video con glightbox
  */
-const image = Astro.props.image;
-// console.log(image) //path de la imagen
 ---
-
+<!-- Movie Image -->
 <div id="bg-image" class="fixed inset-0 bg-image"></div>
 
-<nav class="absolute w-screen px-10">
+<!-- NavBar -->
+<nav class="absolute w-screen px-10 gradient">
   <div
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-5"
   >
@@ -66,6 +75,7 @@ const image = Astro.props.image;
   class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
 >
   <div class="flex flex-col items-center">
+    <a href={trailer_url}>
     <button class="hover:scale-110" type="button">
       <svg
         width="45"
@@ -82,18 +92,23 @@ const image = Astro.props.image;
           fill="#110E47"></path>
       </svg>
     </button>
+  </a>
     <p class="py-2 text-white text-shadow-lg text-shadow-black">Play Trailer</p>
   </div>
 </div>
 
 <style>
   .bg-image {
-    background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.35) 19.27%,
-      rgba(0, 0, 0, 0) 29.17%
-    );
+    background-color: black;
     height: 50vh;
+  }
+  .gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5) 19.27%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    
   }
   .text-shadow-lg {
     text-shadow: 0 0 5px rgb(6, 10, 64), 0 0 10px rgb(19, 8, 63), 0 0 15px #fff,
