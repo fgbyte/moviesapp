@@ -1,14 +1,19 @@
 ---
 import MovieCast from "../components/MovieCast.astro";
-
+const { h2, stars, genres, rating, lang, description, release } = Astro.props;
+//TODO
+//genres classification
 ---
-  <div class="absolute w-screen mt-mitad px-10 bg-white dark:bg-gray-800 rounded-t-xl">
+
+<div
+  class="absolute w-screen mt-mitad px-10 bg-white dark:bg-gray-800 rounded-t-xl"
+>
   <div class="flex flex-col flex-start">
     <div class="flex gap-2 items-center justify-between">
       <h2
         class="text-3xl mt-6 font-semibold tracking-tight text-gray-900 dark:text-white"
       >
-        Dynamic Title and Image
+        {h2}
       </h2>
       <button>
         <svg
@@ -37,24 +42,23 @@ import MovieCast from "../components/MovieCast.astro";
         ></path></svg
       >
       <span class="text-blue-800 text-xs font-semibold rounded dark:text-white"
-        >dynamic date</span
+        >{stars}</span
       >
     </div>
     <div class="flex flex-row gap-2 flex-wrap uppercase">
-      <span
-        class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-xl dark:bg-blue-200 dark:text-blue-800"
-        >dynamic</span
-      >
-      <span
-        class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-xl dark:bg-blue-200 dark:text-blue-800"
-        >dynamic</span
-      >
-      <span
-        class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-xl dark:bg-blue-200 dark:text-blue-800"
-        >dynamic</span
-      >
+      {
+        genres.map((genre) => {
+          return (
+            <>
+              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-xl dark:bg-blue-200 dark:text-blue-800">
+                {genre}
+              </span>
+            </>
+          );
+        })
+      }
     </div>
-  
+
     <div class="flex mt-4 items-center">
       <svg
         class="w-5 h-5 mt-1.5 text-black-500 dark:text-gray-400"
@@ -72,35 +76,33 @@ import MovieCast from "../components/MovieCast.astro";
       <p class="text-sm dark:text-gray-400">1h 45m</p>
     </div>
   </div>
-  
-  
+
   <div class="grid grid-cols-3 mx-auto mt-4 dark:text-white">
-      <div>
-          <p class="text-gray-500 dark:text-gray-400 mb-1">Length</p>
-          <span>2h 28min</span>
-      </div>
-      <div>
-          <p class="text-gray-500 dark:text-gray-400 mb-1">Language</p>
-          <span>English</span>
-      </div>
-      <div>
-          <p class="text-gray-500 dark:text-gray-400 mb-1">Rating</p>
-          <span>PG-13</span>
-      </div>
-  </div>
-  
-  <div class="mt-8">
-      <h3 class="text-black dark:text-white text-xl">Description</h3>
-      <p class="mt-2 text-gray-500 dark:text-gray-400">
-          With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.
-      </p>
-  </div>
-  <MovieCast/>
+    <div>
+      <p class="text-gray-500 dark:text-gray-400 mb-1">Release</p>
+      <span>{release}</span>
+    </div>
+    <div>
+      <p class="text-gray-500 dark:text-gray-400 mb-1">Language</p>
+      <span class="uppercase">{lang}</span>
+    </div>
+    <div>
+      <p class="text-gray-500 dark:text-gray-400 mb-1">Rating</p>
+      <span>{rating}</span>
+    </div>
   </div>
 
+  <div class="mt-8 pb-20">
+    <h3 class="text-black dark:text-white text-xl">Description</h3>
+    <p class="mt-2 text-gray-500 dark:text-gray-400">
+      {description}
+    </p>
+  </div>
+  <!-- <MovieCast /> -->
+</div>
 
-  <style>
-    .mt-mitad {
-      margin-top: 48vh;
-    }
-  </style>
+<style>
+  .mt-mitad {
+    margin-top: 48vh;
+  }
+</style>

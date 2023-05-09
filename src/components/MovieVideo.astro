@@ -1,22 +1,113 @@
 ---
-import MovieHeader from "./MovieHeader.astro";
 /*TODO
  * video con glightbox
  */
+const image = Astro.props.image;
+// console.log(image) //path de la imagen
 ---
 
-  <div
-    class="fixed inset-0 bg-image "
-  >
-  </div>
+<div id="bg-image" class="fixed inset-0 bg-image"></div>
 
-<MovieHeader />
+<nav class="absolute w-screen px-10">
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-5"
+  >
+    <a
+      href="/"
+      class="hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+    >
+      <svg
+        width="16"
+        height="10"
+        class="text-gray-500 dark:text-white"
+        viewBox="0 0 16 10"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M15.3074 4.30229H2.36462L5.45295 1.19101C5.7235 0.918626 5.7235 0.47676 5.45295 0.204412C5.18239 -0.0681374 4.74375 -0.0681374 4.4736 0.204412L0.202918 4.50662C-0.0676393 4.77901 -0.0676393 5.22091 0.202918 5.49322L4.4736 9.79563C4.60883 9.93194 4.78607 10 4.96327 10C5.14047 10 5.31771 9.93194 5.45295 9.79563C5.7235 9.52324 5.7235 9.08137 5.45295 8.80907L2.36462 5.69763H15.3074C15.6898 5.69763 16 5.38523 16 4.99994C16 4.61465 15.6899 4.30229 15.3074 4.30229Z"
+        ></path>
+      </svg>
+    </a>
+
+    <button
+      id="theme-toggle"
+      type="button"
+      class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+    >
+      <svg
+        id="theme-toggle-dark-icon"
+        class="hidden w-5 h-5"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+        ></path></svg
+      >
+      <svg
+        id="theme-toggle-light-icon"
+        class="hidden w-5 h-5"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+          fill-rule="evenodd"
+          clip-rule="evenodd"></path></svg
+      >
+    </button>
+  </div>
+</nav>
+
+<!-- Play button -->
+<div
+  class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
+>
+  <div class="flex flex-col items-center">
+    <button class="hover:scale-110" type="button">
+      <svg
+        width="45"
+        height="45"
+        viewBox="0 0 45 45"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M22.5 0C10.0738 0 0 10.0736 0 22.5C0 34.9264 10.0738 45 22.5 45C34.9262 45 45 34.9264 45 22.5C45 10.0736 34.9262 0 22.5 0Z"
+          fill="white"></path>
+        <path
+          d="M30.342 24.1311L19.142 30.7975C18.9154 30.9323 18.6577 31 18.4 31C18.1666 31 17.9328 30.9447 17.7212 30.8327C17.2762 30.5977 17 30.1517 17 29.6667V16.3339C17 15.8489 17.2762 15.4029 17.7212 15.1679C18.1662 14.9316 18.7104 14.9459 19.142 15.2031L30.342 21.8695C30.7512 22.1137 31 22.5407 31 23.0003C31 23.4599 30.7512 23.887 30.342 24.1311Z"
+          fill="#110E47"></path>
+      </svg>
+    </button>
+    <p class="py-2 text-white text-shadow-lg text-shadow-black">Play Trailer</p>
+  </div>
+</div>
 
 <style>
   .bg-image {
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url("/video1.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 19.27%,
+      rgba(0, 0, 0, 0) 29.17%
+    );
     height: 50vh;
   }
+  .text-shadow-lg {
+    text-shadow: 0 0 5px rgb(6, 10, 64), 0 0 10px rgb(19, 8, 63), 0 0 15px #fff,
+      0 0 20px #fff, 0 0 25px rgb(8, 8, 42);
+  }
 </style>
+
+<script>
+  import { getTrendingMoviesPreview } from "../api/main.js";
+  const movies = await getTrendingMoviesPreview();
+  const id = location.pathname.split("/")[2];
+  const movie = movies.find((movie) => movie.id == id);
+  const imagesURL = "https://image.tmdb.org/t/p/w500";
+  const bg = `${imagesURL}${movie.backdrop_path}`;
+  const headerSection = document.querySelector("#bg-image");
+  headerSection.style.background = `url(${bg}) no-repeat center center/cover`;
+</script>
