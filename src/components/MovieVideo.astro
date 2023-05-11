@@ -4,6 +4,8 @@ const image = Astro.props.image;//no encuentro sintaxis para tirarla al css por 
 const id = Astro.params
 const movie_id = id.id
 // console.log(movie_id)
+//TODO
+//categories strings
 ---
 <!-- Movie Image -->
 <div id="bg-image" class="fixed inset-0 bg-image"></div>
@@ -130,7 +132,7 @@ const lightbox = GLightbox({
   'href': trailer_url,
   'type': 'video',
   'source': 'youtube',
-  'width': 800,
+  'width': 1000,
   'autoPlayVideos': 'true',
 });
 const playButton = document.querySelector('#play-button')
