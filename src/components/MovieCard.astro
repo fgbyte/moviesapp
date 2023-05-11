@@ -3,7 +3,7 @@ import MovieCast from "../components/MovieCast.astro";
 const { h2, stars, genres, rating, lang, description, release } = Astro.props;
 //TODO
 //genres classification
-//actors fetch
+
 ---
 
 <div
@@ -93,13 +93,13 @@ const { h2, stars, genres, rating, lang, description, release } = Astro.props;
     </div>
   </div>
 
-  <div class="mt-8 pb-20">
+  <div class="mt-8">
     <h3 class="text-black dark:text-white text-xl">Description</h3>
     <p class="mt-2 text-gray-500 dark:text-gray-400">
       {description}
     </p>
   </div>
-  <!-- <MovieCast /> -->
+  <MovieCast />
 </div>
 
 <style>

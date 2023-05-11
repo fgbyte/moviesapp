@@ -57,3 +57,12 @@ export async function getVideos(movie_id) {
         return console.log(error)
     }
 }
+
+export async function getCredits(movie_id) {
+    try {
+        const { data } = await api(`/movie/${movie_id}/credits`)
+        return data
+    } catch (error) {
+        return console.error(error)
+    }
+}

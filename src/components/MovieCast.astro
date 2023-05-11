@@ -1,17 +1,30 @@
 ---
 import TitleCard from "./TitleCard.astro";
 import MovieActor from "./MovieActor.astro";
+
+const id = Astro.params
+const movie_id = id.id
+import { getCredits } from '../api/main.js'
+const credits = await getCredits(movie_id)
+
+const actors = credits.cast.filter(actor => actor.known_for_department == "Acting")
+const principalsActors = actors.splice(0, 8)
+console.log(principalsActors)
+const image_url = 'https://www.themoviedb.org/t/p/w138_and_h175_face/'
 ---
 
 <div class="mt-6">
   <TitleCard title={`Cast`} />
 
   <div class="flex flex-row overflow-x-scroll gap-4">
-        <MovieActor/>
-        <MovieActor/>
-        <MovieActor/>
-        <MovieActor/>
-        <MovieActor/>
-    
+    {
+      principalsActors.map((actor) => {
+        return (
+          <>
+          <MovieActor name={actor.name} image={image_url + actor.profile_path} character={actor.character}/>
+          </>
+        )
+      })
+    }
   </div>
 </div>
