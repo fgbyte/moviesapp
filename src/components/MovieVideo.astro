@@ -4,14 +4,6 @@ const image = Astro.props.image;//no encuentro sintaxis para tirarla al css por 
 const id = Astro.params
 const movie_id = id.id
 // console.log(movie_id)
-import { getVideos } from "../api/main.js";
-
-const videos = await getVideos(movie_id)
-const trailer = videos.results.find(video => video.type == "Trailer")
-const trailer_url = 'https://youtu.be/' + trailer.key
-/*TODO
- * video con glightbox
- */
 ---
 <!-- Movie Image -->
 <div id="bg-image" class="fixed inset-0 bg-image"></div>
@@ -74,8 +66,8 @@ const trailer_url = 'https://youtu.be/' + trailer.key
 <div
   class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
 >
-  <div class="flex flex-col items-center">
-    <a href={trailer_url}>
+  <div class="flex flex-col items-center" id="play-button">
+    <a href="#" class="glightbox">
     <button class="hover:scale-110" type="button">
       <svg
         width="45"
@@ -125,4 +117,33 @@ const trailer_url = 'https://youtu.be/' + trailer.key
   const bg = `${imagesURL}${movie.backdrop_path}`;
   const headerSection = document.querySelector("#bg-image");
   headerSection.style.background = `url(${bg}) no-repeat center center/cover`;
+
+
+import { getVideos } from "../api/main.js";
+const videos = await getVideos(id)
+const trailer = videos.results.find(video => video.type == "Trailer")
+const trailer_url = 'https://youtu.be/' + trailer.key
+
+//usando glightbox
+import GLightbox from 'glightbox';
+const lightbox = GLightbox({
+  'href': trailer_url,
+  'type': 'video',
+  'source': 'youtube',
+  'width': 800,
+  'autoPlayVideos': 'true',
+});
+const playButton = document.querySelector('#play-button')
+function hiddeButton() {
+  playButton.style.display = 'none'
+  showButton()
+}
+function showButton() {
+  playButton.style.display = 'flex'
+}
+if (playButton) {
+  playButton.addEventListener('click', hiddeButton)
+}
 </script>
+
+<link rel="stylesheet" href="/node_modules/glightbox/dist/css/glightbox.min.css">

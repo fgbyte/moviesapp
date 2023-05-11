@@ -11,11 +11,8 @@ const imagesURL = 'https://image.tmdb.org/t/p/w300'
 import { getTrendingMoviesPreview } from "../../api/main.js";
 const movies = await getTrendingMoviesPreview()
 const movie = movies.find(movie => movie.id == id)
-console.log(movie)
+// console.log(movie)
 // console.log(imagesURL + movie.backdrop_path)
-
-//TODO
-//- pasarlos a los components
 ---
 <Layout title="Movies">
   <header class=" dark:bg-gray-800">
