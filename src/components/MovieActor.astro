@@ -2,8 +2,8 @@
 const { name, image, character } = Astro.props;
 ---
 <div class="py-6">
-    <div class="flex flex-col gap-2 items-center p-2 dark:text-white">
-        <img class="w-fit rounded" src={image} alt="Default avatar">
+    <div class="flex flex-col w-20 gap-2 items-center p-2 dark:text-white">
+        <img class="rounded-md" src={image} alt="Default avatar">
         <p>{name}</p>
         <p class="text-sm font-light">{character}</p>
     </div>

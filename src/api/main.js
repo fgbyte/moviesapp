@@ -66,3 +66,12 @@ export async function getCredits(movie_id) {
         return console.error(error)
     }
 }
+
+export async function getGenres() {
+    try {
+        const { data } = await api('genre/movie/list')
+        return data
+    } catch (error) {
+        return console.error(error)
+    }
+}

@@ -9,7 +9,7 @@ const credits = await getCredits(movie_id)
 
 const actors = credits.cast.filter(actor => actor.known_for_department == "Acting")
 const principalsActors = actors.splice(0, 8)
-console.log(principalsActors)
+// console.log(principalsActors)
 const image_url = 'https://www.themoviedb.org/t/p/w138_and_h175_face/'
 ---
 
