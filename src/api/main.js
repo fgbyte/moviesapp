@@ -27,17 +27,6 @@ export async function getTrendingMoviesPreview() {
 
 }
 
-// export async function getPopularMovies() {
-//     // GET /movie/popular
-//     try {
-//         const { data } = await api('movie/popular')
-//         const movies = data.results
-//         return movies
-//     } catch (error) {
-//         return console.log(error)
-//     }
-// }
-
 export async function getCategoriesPreview() {
     //GET /genre/movie/list => array[object]
     try {
@@ -45,7 +34,7 @@ export async function getCategoriesPreview() {
         const categories = data.genres
         return categories
     } catch (error) {
-        return console.log(error)
+        return console.error(error)
     }
 }
 
@@ -54,7 +43,7 @@ export async function getVideos(movie_id) {
         const { data } = await api(`movie/${movie_id}/videos`)
         return data
     } catch (error) {
-        return console.log(error)
+        return console.error(error)
     }
 }
 
@@ -73,5 +62,31 @@ export async function getGenres() {
         return data
     } catch (error) {
         return console.error(error)
+    }
+}
+
+export async function getMoviesByCategories(category_id) {
+    //GET /discover/movie
+    //es el endpoint para filtrar películas
+    //debemos enviar un query param para el tipo de filtro (?query_param)
+    try {
+        const { data } = await api('discover/movie', {
+            params: {
+                with_genres: category_id,
+            }
+        })
+        return data
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+export async function getMovie(movie_id) {
+    // GET /movie/{movie_id}
+    try {
+        const { data } = await api(`/movie/${movie_id}`)
+        return data
+    } catch (err) {
+        console.error(err)
     }
 }

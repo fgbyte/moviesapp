@@ -6,18 +6,15 @@ import MovieCard from "../../components/MovieCard.astro";
 const { id } = Astro.params;
 const imagesURL = 'https://image.tmdb.org/t/p/w300'
 
-//esto genera una ruta dynamic con el id pasado como param en la url
-// console.log(id)//para que se muestre el file tiene que llamarse como [la prop]
-import { getTrendingMoviesPreview } from "../../api/main.js";
-const movies = await getTrendingMoviesPreview()
-const movie = movies.find(movie => movie.id == id)
-// console.log(movie)
+import { getMovie } from "../../api/main.js";
+const movie = await getMovie(id)
+console.log(movie) //datos de la movie
 // console.log(imagesURL + movie.backdrop_path)
 ---
 <Layout title="Movies">
   <header class=" dark:bg-gray-800">
     <MovieVideo image={imagesURL + movie.backdrop_path}/>
   </header>
-      <MovieCard h2={movie.title} stars={movie.vote_average} genres={movie.genre_ids} rating={movie.popularity} lang={movie.original_language} description={movie.overview} release={movie.release_date}/>
+      <MovieCard h2={movie.title} stars={movie.vote_average} genres={movie.genres} rating={movie.popularity} lang={movie.original_language} description={movie.overview} release={movie.release_date} runtime={movie.runtime}/>
 
 </Layout>

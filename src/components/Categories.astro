@@ -12,7 +12,7 @@ const categories = await getCategoriesPreview();
       categories.map((genre) => {
         return (
           <>
-            <Genres name={genre.name}/>
+            <Genres name={genre.name} id={genre.id}/>
           </>
         );
       })

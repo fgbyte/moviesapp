@@ -109,10 +109,9 @@ const movie_id = id.id
 </style>
 
 <script>
-  import { getTrendingMoviesPreview } from "../api/main.js";
-  const movies = await getTrendingMoviesPreview();
+  import { getMovie } from "../api/main.js";
   const id = location.pathname.split("/")[2];
-  const movie = movies.find((movie) => movie.id == id);
+  const movie = await getMovie(id);
   const imagesURL = "https://image.tmdb.org/t/p/w500";
   const bg = `${imagesURL}${movie.backdrop_path}`;
   const headerSection = document.querySelector("#bg-image");
