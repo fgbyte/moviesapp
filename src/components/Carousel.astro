@@ -1,13 +1,13 @@
 ---
+import FilmCard from "./FilmCard.astro";
 import { getTrendingMoviesPreview } from "../api/main.js";
 const movies = await getTrendingMoviesPreview();
 // console.log(movies) //-> array de movies
 
-import FilmCard from "./FilmCard.astro";
 const imagesURL = 'https://image.tmdb.org/t/p/w300'
 ---
 
-<div class="flex flex-row overflow-x-scroll gap-2 dark:bg-gray-800 px-2 py-4">
+<div class="flex flex-row overflow-x-scroll gap-2 dark:bg-gray-800 px-2">
   {
     movies.map((movie) => {
       return (
