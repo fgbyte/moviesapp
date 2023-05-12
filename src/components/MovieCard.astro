@@ -1,8 +1,6 @@
 ---
 import MovieCast from "../components/MovieCast.astro";
 const { h2, stars, genres, rating, lang, description, release } = Astro.props;
-//TODO
-//genres classification
 import { getGenres } from "../api/main.js";
 const generos = await getGenres();
 // console.log(generos); //todos los generos que hay con sus ids
