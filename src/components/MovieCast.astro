@@ -8,12 +8,11 @@ import { getCredits } from '../api/main.js'
 const credits = await getCredits(movie_id)
 
 const actors = credits.cast.filter(actor => actor.known_for_department == "Acting")
-const principalsActors = actors.splice(0, 8)
-// console.log(principalsActors)
+const principalsActors = actors.splice(0, 20)
 const image_url = 'https://www.themoviedb.org/t/p/w138_and_h175_face/'
 ---
 
-<div class="mt-6">
+<div class="mt-6 pb-5">
   <TitleCard title={`Cast`} />
 
   <div class="flex flex-row overflow-x-scroll gap-4">

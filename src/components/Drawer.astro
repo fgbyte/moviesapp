@@ -1,7 +1,7 @@
 <!-- drawer component -->
 <div
   id="drawer-example"
-  class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 mt-16 dark:bg-gray-800"
+  class="fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
   tabindex="-1"
   aria-labelledby="drawer-label"
 >
@@ -74,5 +74,12 @@
           clip-rule="evenodd"></path></svg
       ></a
     >
+  </div>
+  <div class="flex flex-col mt-20 items-center">
+    <img class="w-14 hidden dark:block" src="https://astro.build/assets/press/astro-icon-light.svg" alt="astro-logo">
+    <img class="w-14 dark:hidden" src="https://astro.build/assets/press/astro-icon-dark.svg" alt="astro-logo">
+    <p class="text-center mt-2 dark:text-gray-400">
+      Made with Astro
+    </p>
   </div>
 </div>
