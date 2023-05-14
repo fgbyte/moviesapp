@@ -11,8 +11,6 @@ const api = axios.create({
     }
 })
 
-
-
 export async function getTrendingMoviesPreview() {
     //GET /trending/{media_type}/{time_window}
     try {
