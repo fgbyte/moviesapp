@@ -1,14 +1,19 @@
 const fetch = require('node-fetch');
 
+/**
+* Redeploys the project on Vercel.
+* @returns {Promise<void>}
+*/
 async function redeploy() {
-  await fetch('https://api.vercel.com/v1/integrations/deploy/prj_HAllRRZAkZXUDneeXRizJbWZRps7/XmbYhilFPW?buildCache=false')
-    .then(() => {
-      console.log('Redeploy iniciado');
-    })
-    .catch((error) => {
-      console.error('Error al iniciar el redeploy:', error);
-    });
+  const endpoint = 'https://api.vercel.com/v1/integrations/deploy/prj_HAllRRZAkZXUDneeXRizJbWZRps7/XmbYhilFPW?buildCache=false';
+  try {
+    await fetch(endpoint);
+    console.log('Redeploy initiated');
+  } catch (error) {
+    console.error('Error initiating redeploy:', error);
+  }
 }
+
 
 // setInterval(redeploy, 24 * 60 * 60 * 1000); // redeploy cada 24 horas
 
