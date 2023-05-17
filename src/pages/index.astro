@@ -8,9 +8,10 @@ import Carousel from "../components/Carousel.astro";
 // import CarouselVertical from "../components/CarouselVertical.astro";
 import Categories from "../components/Categories.astro";
 import BottomNav from "../components/BottomNav.astro";
+import Search from "../components/Search.astro";
 
 //TODO
-//Categories routing
+//Redeploy
 
 //FIXME
 //para que se activen los scripts del Drawer hay que esperar a que carguen todas las images cosa que ralentiza mucho el first interaction
@@ -20,6 +21,7 @@ import BottomNav from "../components/BottomNav.astro";
 		<Navbar />
   <Drawer />
   <div class="dark:bg-gray-800 px-10 pt-20">
+    <Search />
     <TitleCard title={`Trending Movies`} />
   </div>
   <Carousel />

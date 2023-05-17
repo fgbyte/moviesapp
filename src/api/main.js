@@ -20,7 +20,7 @@ export async function getTrendingMoviesPreview() {
         return movies
         //movies nos trae los objetos de 20 movies en tendencia
     } catch (error) {
-        return console.error(error)
+        console.error(error)
     }
 
 }
@@ -87,4 +87,17 @@ export async function getMovie(movie_id) {
     } catch (err) {
         console.error(err)
     }
+}
+
+
+export async function handleSearch(search) {
+    const { data } = await api(`/search/movie`, {
+        params: {
+            query: search,
+            include_adult: 'false',
+            language: 'en-US',
+            page: '1'
+        },
+    })
+    return data //array de movies
 }
