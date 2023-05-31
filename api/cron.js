@@ -1,4 +1,4 @@
-export default async function redeploy() {
+async function redeploy() {
     const endpoint = 'https://api.vercel.com/v1/integrations/deploy/prj_HAllRRZAkZXUDneeXRizJbWZRps7/XmbYhilFPW?buildCache=false';
     try {
       await fetch(endpoint);
@@ -7,3 +7,5 @@ export default async function redeploy() {
       console.error('Error initiating redeploy:', error);
     }
   }
+
+  redeploy()
