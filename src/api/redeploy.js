@@ -1,3 +1,6 @@
+//FIXME
+//Esto no funciona
+
 const fetch = require('node-fetch');
 
 /**
@@ -17,7 +20,7 @@ async function redeploy() {
 
 // setInterval(redeploy, 24 * 60 * 60 * 1000); // redeploy cada 24 horas
 
-setInterval(redeploy, 5 * 60 * 1000); // redeploy en 5 minutes
+// setInterval(redeploy, 5 * 60 * 1000); // redeploy en 5 minutes
 
 // Llamamos a la función redeploy para que se ejecute inmediatamente
-redeploy();
+redeploy();//no funciona esto en vercel
