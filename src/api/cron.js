@@ -1,5 +1,4 @@
-const endpoint =
-    "https://api.vercel.com/v1/integrations/deploy/prj_HAllRRZAkZXUDneeXRizJbWZRps7/XmbYhilFPW?buildCache=false";
+const endpoint = process.env.DEPLOY_HOOK;
 
 async function fetchData(endpoint) {
     try {
