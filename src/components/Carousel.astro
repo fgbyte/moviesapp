@@ -1,20 +1,24 @@
 ---
 import FilmCard from "./FilmCard.astro";
 import { getTrendingMoviesPreview } from "../api/main.js";
-const movies = await getTrendingMoviesPreview();
-// console.log(movies) //-> array de movies
+const data = await getTrendingMoviesPreview();
+// console.log(data) //-> array de movies
 
 const imagesURL = 'https://image.tmdb.org/t/p/w300'
 ---
 
 <div class="flex flex-row overflow-x-scroll gap-2 dark:bg-gray-800 px-2">
   {
-    movies.map((movie) => {
+    !data && <p class="dark:text-white">You are Offline</p>
+  }
+
+  {
+    data && data.map((movie) => {
       return (
         <>
           <FilmCard image={imagesURL + movie.poster_path} stars={movie.vote_average} alt={movie.title} id={movie.id}/>
         </>
-      );
+      )
     })
   }
 </div>

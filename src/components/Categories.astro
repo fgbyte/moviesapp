@@ -1,25 +1,24 @@
 ---
 import Genres from "./Genres.astro";
 import { getCategoriesPreview } from "../api/main.js";
-const categories = await getCategoriesPreview();
+const data = await getCategoriesPreview();
 ---
 
 <div class="flex flex-col flex-wrap pb-20 dark:bg-gray-800 gap-4 altura">
-
-    {
-      categories.map((genre) => {
+  <!-- <p class="dark:text-white">Data not Found</p> -->
+  {
+    data && data.map((genre) => {
         return (
           <>
-            <Genres name={genre.name} id={genre.id}/>
+            <Genres name={genre.name} id={genre.id} />
           </>
         );
       })
-    }
+  }
 </div>
 
-
 <style>
-    .altura {
-        height: 70vh;
-    }
+  .altura {
+    height: 70vh;
+  }
 </style>
