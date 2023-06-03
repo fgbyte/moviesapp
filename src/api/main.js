@@ -1,5 +1,7 @@
 import axios from "axios"
-import { API_KEY } from "./secrets"
+// import { API_KEY } from "./secrets"
+const apiKey = process.env.API_KEY;
+
 
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
@@ -7,7 +9,7 @@ const api = axios.create({
         'Content-Type': 'application/json;charset=utf-8',
     },
     params: {
-        'api_key': API_KEY
+        'api_key': apiKey
     }
 })
 
