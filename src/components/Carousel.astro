@@ -1,15 +1,18 @@
 ---
 import FilmCard from "./FilmCard.astro";
 import { getTrendingMoviesPreview } from "../api/main.js";
-const data = await getTrendingMoviesPreview();
-// console.log(data) //-> array de movies
-
 const imagesURL = 'https://image.tmdb.org/t/p/w300'
+
+let skeletons: string = 'block'
+const data = await getTrendingMoviesPreview();
+if(data) {
+  skeletons = 'hidden'
+}
 ---
 
 <div class="flex flex-row overflow-x-scroll gap-2 dark:bg-gray-800 px-2">
   {
-    !data && <p class="dark:text-white">You are Offline</p>
+    <p class={`dark:text-white ${skeletons}`}>You are Offline</p>
   }
 
   {

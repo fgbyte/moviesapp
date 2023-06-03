@@ -14,9 +14,8 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <!-- Dark Mode Script -->
     <script>
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      // Dark Mode Script
       if (
         localStorage.getItem("color-theme") === "dark" ||
         (!("color-theme" in localStorage) &&
@@ -31,10 +30,8 @@ const { title } = Astro.props;
   <body>
     <slot />
     <script>
-      import 'flowbite'
-      import './darkTheme.js'
-      // import '../api/main.js'
+      import "flowbite";
+      import "./darkTheme.js";
     </script>
   </body>
 </html>
-
