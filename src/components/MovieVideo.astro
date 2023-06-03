@@ -1,12 +1,9 @@
 ---
-const image = Astro.props.image;//no encuentro sintaxis para tirarla al css por lo que tuve que hacerlo con vanilla
-// console.log(image) //path de la imagen
-const id = Astro.params
-const movie_id = id.id
-// console.log(movie_id)
+const image = Astro.props.image;
+console.log(image) //path de la imagen
 ---
 <!-- Movie Image -->
-<div id="bg-image" class="fixed inset-0 bg-image"></div>
+<div class="fixed inset-0" style={`background: url(${image}) no-repeat center top`}></div>
 
 <!-- NavBar -->
 <nav class="absolute w-screen px-10 gradient">
@@ -109,16 +106,8 @@ const movie_id = id.id
 </style>
 
 <script>
-  import { getMovie } from "../api/main.js";
-  const id = location.pathname.split("/")[2];
-  const movie = await getMovie(id);
-  const imagesURL = "https://image.tmdb.org/t/p/w780";
-  const bg = `${imagesURL}${movie.backdrop_path}`;
-  const headerSection = document.querySelector("#bg-image");
-  headerSection.style.background = `url(${bg}) no-repeat center center/cover`;
-
-
 import { getVideos } from "../api/main.js";
+const id = location.pathname.split("/")[2];
 const videos = await getVideos(id)
 const trailer = videos.results.find(video => video.type == "Trailer")
 const trailer_url = 'https://youtu.be/' + trailer.key

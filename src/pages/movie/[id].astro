@@ -4,7 +4,7 @@ import MovieVideo from "../../components/MovieVideo.astro";
 import MovieCard from "../../components/MovieCard.astro";
 
 const { id } = Astro.params;
-const imagesURL = "https://image.tmdb.org/t/p/w300";
+const imagesURL = "https://image.tmdb.org/t/p/w780";
 
 import { getMovie } from "../../api/main.js";
 const movie = await getMovie(id);
