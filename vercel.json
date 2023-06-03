@@ -1,8 +1,8 @@
 {
     "crons": [
       {
-        "path": "/src/api/cron",
-        "schedule": "8 * 60 * 1000"
+        "path": "/api/redeploy",
+        "schedule": "0 0 * * *"
       }
     ]
   }
