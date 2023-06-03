@@ -4,13 +4,16 @@ const stars = Astro.props.stars
 const alt = Astro.props.alt
 const id = Astro.props.id
 //id de la movie sirve para pagination dynamic
+const notImage = 'https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg'
 ---
 
 <div
   class="w-40 px-2 max-w-sm bg-white rounded-lg hover:shadow-lg hover:transition duration-500 hover:scale-105 dark:bg-gray-800 flex flex-col"
 >
 <a class="flex justify-center w-32" href={"/movie/" + id}>
-  <img class="m-4 rounded-md" src={image} alt={alt} />
+  <img class="m-4 rounded-md" 
+  src={image === 'https://image.tmdb.org/t/p/w300null' ? notImage : image} 
+  alt={alt} loading="lazy" />
 </a>
   <div class="w-34">
     <div class="flex flex-wrap gap-2 mb-5">
@@ -38,3 +41,10 @@ const id = Astro.props.id
     </div>
   </div>
 </div>
+
+<style>
+  /* para que se active el Lazy Load en las categories/search */
+  img {
+    min-height: 200px;
+  }
+</style>
