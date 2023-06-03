@@ -258,3 +258,7 @@ $RECYCLE.BIN/
 
 # SSR build
 .vercel
+
+
+# Secrets.js API_KEY para desarrollar con yarn
+src/api/secrets.js

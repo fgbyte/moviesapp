@@ -1,6 +1,6 @@
 import axios from "axios"
-// import { API_KEY } from "./secrets"
-const apiKey = process.env.API_KEY;
+import { API_KEY } from "./secrets" //para desarrollo con yarn
+const apiKey = process.env.API_KEY; //para desarrollo con vercel
 
 
 const api = axios.create({
@@ -9,7 +9,7 @@ const api = axios.create({
         'Content-Type': 'application/json;charset=utf-8',
     },
     params: {
-        'api_key': apiKey
+        'api_key': API_KEY//API_KEY para yarn ;  apiKey para vercel
     }
 })
 
