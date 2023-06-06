@@ -7,19 +7,20 @@ import FilmCard from "../../components/FilmCard.astro";
 
 const imagesURL = "https://image.tmdb.org/t/p/w300";
 
-const category_id = Astro.params.category;
-// console.log(category_id) //bien
+const parts = Astro.params.category.split('-');
+const category_id = parts[0];
+const category_name = parts[1];
+// console.log(Astro.params) //bien
 import { getMoviesByCategories } from "../../api/main.js";
 const catMovies = await getMoviesByCategories(category_id);
 const movies = catMovies.results
-// console.log(catMovies)
 ---
 
 <Layout title="Fox Films">
   <Navbar />
   <Drawer />
   <div class="dark:bg-gray-800 px-8 py-20">
-    <h2></h2>
+    <h2 class="dark:text-white mb-4 text-2xl font-bold">{category_name}</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {
         movies.map((movie) => {
@@ -37,5 +38,4 @@ const movies = catMovies.results
     </div>
   </div>
 </Layout>
-
 <BottomNav />
