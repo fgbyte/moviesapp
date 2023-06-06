@@ -1,6 +1,6 @@
 import axios from "axios"
 import { API_KEY } from "./secrets" //para desarrollo con yarn
-const apiKey = process.env.API_KEY; //para desarrollo con vercel
+// const apiKey = process.env.API_KEY; //para desarrollo con vercel
 
 
 const api = axios.create({
@@ -103,3 +103,36 @@ export async function handleSearch(search) {
     })
     return data //array de movies
 }
+
+
+//LOCALE STORAGE FUNCTIONS
+export function likedMoviesList() {
+    const item = JSON.parse(localStorage.getItem("liked_movies"));
+    let movies;
+
+    if (item) {
+      movies = item;//guárdalo en movies
+    } else {
+      movies = {};//sino dame un {}
+    }
+    return movies;
+    //con esto hacemos que si hay algo lo retorne y si no que nos de un {}
+  }
+
+export function likeMovie(id, movie) {
+    //ver si esta o no en LS
+    //para ello debemos buscar si el id de la movie esta ya en LS
+    const likedMovies = likedMoviesList()
+    
+    const movieInfo = movie.outerHTML
+    // console.log(movieInfo)
+    
+    if(likedMovies[id]) {
+      likedMovies[id] = undefined
+    } else {
+      likedMovies[id] = movieInfo
+    }
+    // console.log(likedMovies)
+
+    localStorage.setItem("liked_movies", JSON.stringify(likedMovies));
+  }
