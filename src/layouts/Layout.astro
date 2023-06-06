@@ -35,3 +35,29 @@ const { title } = Astro.props;
     </script>
   </body>
 </html>
+
+<script>
+  //* Local Storage *//
+  import { likeMovie } from '../api/main.js'
+  const nodeListOfBtn = document.querySelectorAll("#fav-btn");
+  const btns = [...nodeListOfBtn];
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const link = btn.previousElementSibling//dame el elemento <a>
+      const url = link.href;//dame el link
+      const parts = url.split("/");
+      const id = parts[parts.length - 1];//dame el id
+      const movie = btn.parentElement.parentElement;//dame el elemento movie
+      // console.log(id)
+      // console.log(movie)
+      btn.classList.toggle("text-yellow-300");//pinta button de amarillo al hacer click
+      //pero necesito que se pinte si esta en el LS
+
+      //TODO
+      // - que se guarde en LS
+      likeMovie(id, movie);
+    });
+  });
+
+</script>
