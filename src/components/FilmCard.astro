@@ -3,6 +3,7 @@ const image = Astro.props.image
 const stars = Astro.props.stars
 const alt = Astro.props.alt
 const id = Astro.props.id
+import LikeButton from './LikeButton.astro'
 //id de la movie sirve para pagination dynamic
 const notImage = 'https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg'
 ---
@@ -10,11 +11,27 @@ const notImage = 'https://static.displate.com/857x1200/displate/2022-04-15/7422b
 <div
   class="w-40 px-2 max-w-sm bg-white rounded-lg hover:shadow-lg hover:transition duration-500 hover:scale-105 dark:bg-gray-800 flex flex-col"
 >
-<a class="flex justify-center w-32" href={"/movie/" + id}>
-  <img class="m-4 rounded-md" 
-  src={image === 'https://image.tmdb.org/t/p/w300null' ? notImage : image} 
-  alt={alt} loading="lazy" />
-</a>
+<div class="relative w-fit">
+  <a class="flex justify-center w-32" href={"/movie/" + id}>
+    <img class="m-4 rounded-md"
+    src={image === 'https://image.tmdb.org/t/p/w300null' ? notImage : image}
+    alt={alt} loading="lazy" />
+  </a>
+  <button class="absolute right-1 top-5 text-gray-300 w-8 h-8 bg-gray-700 rounded-full inline-flex justify-center items-center">
+    <svg
+      class="w-3 h-4 hover:text-yellow-500 dark:hover:text-yellow-300"
+      viewBox="0 0 14 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M13.2127 0.0952657C13.4531 0.186901 13.6446 0.331356 13.7869 0.528887C13.9289 0.726308 14 0.944767 14 1.18452V14.8156C14 15.0554 13.929 15.2738 13.7868 15.4712C13.6446 15.6688 13.4531 15.8134 13.2126 15.9049C13.0741 15.9613 12.9136 15.9893 12.7313 15.9893C12.3814 15.9893 12.0788 15.8765 11.8235 15.6513L7.00004 11.1671L2.17653 15.6512C1.91396 15.8836 1.61151 16 1.26868 16C1.101 16 0.940528 15.9683 0.787521 15.905C0.54694 15.8134 0.355471 15.6688 0.213305 15.4714C0.0711784 15.2738 0 15.0555 0 14.8156V1.18438C0 0.944619 0.0711784 0.72616 0.213305 0.528739C0.355471 0.331319 0.54694 0.186679 0.787521 0.0951175C0.940681 0.0317429 1.101 0 1.26868 0H12.7313V0.000148158C12.8991 0.000148158 13.0595 0.031891 13.2127 0.0952657ZM7.97354 10.1942L12.6001 14.4876V1.35377H1.40015V14.4876L6.02667 10.1942L7.00006 9.29545L7.97354 10.1942Z"
+      ></path>
+    </svg>
+  </button>
+</div>
   <div class="w-34">
     <div class="flex flex-wrap gap-2 mb-5">
       <h5
@@ -40,6 +57,8 @@ const notImage = 'https://static.displate.com/857x1200/displate/2022-04-15/7422b
       </div>
     </div>
   </div>
+
+
 </div>
 
 <style>
