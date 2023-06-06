@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Drawer from "../../components/Drawer.astro";
+import Search from "../../components/Search.astro";
+import BottomNav from "../../components/BottomNav.astro";
+import FilmCard from "../../components/FilmCard.astro";
+
+const imagesURL = "https://image.tmdb.org/t/p/w300";
+---
+
+<Layout title="Fox Films">
+  <Navbar />
+  <Drawer />
+  <div class="dark:bg-gray-800 px-8 py-20">
+    <h2 class="dark:text-white mb-4 text-2xl font-bold">Favs Movies</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- //favs movies en LS (vanilla) -->
+    </div>
+  </div>
+</Layout>
+
+<BottomNav />
