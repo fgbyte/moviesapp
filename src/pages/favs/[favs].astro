@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Drawer from "../../components/Drawer.astro";
 import BottomNav from "../../components/BottomNav.astro";
-import FilmCard from "../../components/FilmCard.astro";
 
 const imagesURL = "https://image.tmdb.org/t/p/w300";
 ---
@@ -26,10 +25,6 @@ const imagesURL = "https://image.tmdb.org/t/p/w300";
 <BottomNav />
 
 <script>
-  //TODO
-  // - leer los Favs FilmCards del LS
-  // - pintarlos en pantalla
-
   import { likedMoviesList } from "../../api/main";
 
   function getLikedMovies() {
