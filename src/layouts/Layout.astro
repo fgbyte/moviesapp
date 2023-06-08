@@ -42,29 +42,31 @@ const { title } = Astro.props;
   const nodeListOfBtn = document.querySelectorAll("button.absolute.right-1");
   const btns = [...nodeListOfBtn];
 
-
   btns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const id: string = btn.id //dame el id
+      const id: string = btn.id; //dame el id
       const movie: HTMLElement = btn.parentElement.parentElement; //dame el elemento movie
       // console.log(id)
       // console.log(movie)
       btn.classList.toggle("text-yellow-300"); //pinta button de amarillo al hacer click
       //pero necesito que se pinte si esta en el LS
-      
+
       //TODO
       // - que se guarde en LS
       likeMovie(id, movie);
     });
   });
-  
-  btns.forEach((btn) => {
-    const id = btn.id //dame el id
-    // if(btn.id == localStorage.getItem("id")){
-    //   btn.classList.add("text-yellow-300");
-    // }
-  })
 
-  //TODO
-  //que el btn se quede pintado si el id esta en el LS
+  btns.forEach((btn) => {
+    const id = btn.id; //dame el id
+    //validación
+    const movies = likedMoviesList();
+
+    for (let i = 0; i < movies.length; i++) {
+      if (movies[i].id === id) {
+        btn.classList.add("text-yellow-300");
+        break;
+      }
+    }
+  });
 </script>

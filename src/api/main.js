@@ -133,13 +133,12 @@ export function likeMovie(id, movie) {
             likedMovies.splice(i, 1)
             foundMatch = true;
             break;
-        } 
+        }
     }
 
     if (!foundMatch) {
         likedMovies.push(movieInfo);
     }
 
-    console.log(likedMovies);
     localStorage.setItem("liked_movies", JSON.stringify(likedMovies));
 }
