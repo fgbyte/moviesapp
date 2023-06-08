@@ -38,20 +38,17 @@ const { title } = Astro.props;
 
 <script>
   //* Local Storage *//
-  import { likeMovie } from '../api/main.js'
-  const nodeListOfBtn = document.querySelectorAll("#fav-btn");
+  import { likeMovie, likedMoviesList } from "../api/main.js";
+  const nodeListOfBtn = document.querySelectorAll("button.absolute.right-1");
   const btns = [...nodeListOfBtn];
 
   btns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const link = btn.previousElementSibling//dame el elemento <a>
-      const url = link.href;//dame el link
-      const parts = url.split("/");
-      const id = parts[parts.length - 1];//dame el id
-      const movie = btn.parentElement.parentElement;//dame el elemento movie
+      const id: string = btn.id; //dame el id
+      const movie: HTMLElement = btn.parentElement.parentElement; //dame el elemento movie
       // console.log(id)
       // console.log(movie)
-      btn.classList.toggle("text-yellow-300");//pinta button de amarillo al hacer click
+      btn.classList.toggle("text-yellow-300"); //pinta button de amarillo al hacer click
       //pero necesito que se pinte si esta en el LS
 
       //TODO
@@ -60,4 +57,16 @@ const { title } = Astro.props;
     });
   });
 
+  btns.forEach((btn) => {
+    const id = btn.id; //dame el id
+    //validación
+    const movies = likedMoviesList();
+
+    for (let i = 0; i < movies.length; i++) {
+      if (movies[i].id === id) {
+        btn.classList.add("text-yellow-300");
+        break;
+      }
+    }
+  });
 </script>

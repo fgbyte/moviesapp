@@ -108,31 +108,37 @@ export async function handleSearch(search) {
 //LOCALE STORAGE FUNCTIONS
 export function likedMoviesList() {
     const item = JSON.parse(localStorage.getItem("liked_movies"));
+    // console.log(item)
     let movies;
 
     if (item) {
-      movies = item;//guárdalo en movies
+        movies = item;//guárdalo en movies
     } else {
-      movies = {};//sino dame un {}
+        movies = [];//sino dame un {}
     }
     return movies;
     //con esto hacemos que si hay algo lo retorne y si no que nos de un {}
-  }
+}
 
 export function likeMovie(id, movie) {
-    //ver si esta o no en LS
-    //para ello debemos buscar si el id de la movie esta ya en LS
-    const likedMovies = likedMoviesList()
-    
-    const movieInfo = movie.outerHTML
-    // console.log(movieInfo)
-    
-    if(likedMovies[id]) {
-      likedMovies[id] = undefined
-    } else {
-      likedMovies[id] = movieInfo
+    const likedMovies = likedMoviesList();
+    const movieInfo = {
+        id: id,
+        html: movie.outerHTML
     }
-    // console.log(likedMovies)
+
+    let foundMatch = false;
+    for (let i = 0; i < likedMovies.length; i++) {
+        if (likedMovies[i] && likedMovies[i].id === id) {
+            likedMovies.splice(i, 1)
+            foundMatch = true;
+            break;
+        }
+    }
+
+    if (!foundMatch) {
+        likedMovies.push(movieInfo);
+    }
 
     localStorage.setItem("liked_movies", JSON.stringify(likedMovies));
-  }
+}

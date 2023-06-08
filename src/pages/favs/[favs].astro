@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Drawer from "../../components/Drawer.astro";
 import BottomNav from "../../components/BottomNav.astro";
-import FilmCard from "../../components/FilmCard.astro";
 
 const imagesURL = "https://image.tmdb.org/t/p/w300";
 ---
@@ -14,7 +13,10 @@ const imagesURL = "https://image.tmdb.org/t/p/w300";
   <div class="dark:bg-gray-800 px-8 py-20">
     <h2 class="dark:text-white mb-4 text-2xl font-bold">Favs Movies</h2>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="liked-movies-container">
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+      id="liked-movies-container"
+    >
       <!-- //favs movies en LS (vanilla) -->
     </div>
   </div>
@@ -23,16 +25,16 @@ const imagesURL = "https://image.tmdb.org/t/p/w300";
 <BottomNav />
 
 <script>
-  //TODO
-  // - leer los Favs FilmCards del LS
-  // - pintarlos en pantalla
-
   import { likedMoviesList } from "../../api/main";
 
   function getLikedMovies() {
     const likedMovies = likedMoviesList();
 
-    const moviesArray = Object.values(likedMovies);
+    let moviesArray = [];
+
+    likedMovies.forEach((movie) => {
+      moviesArray.push(movie.html);
+    });
 
     const container = document.querySelector("#liked-movies-container");
     container.innerHTML = moviesArray.join("");
